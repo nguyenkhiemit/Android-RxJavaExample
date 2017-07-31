@@ -27,7 +27,7 @@ class NavigationManager(var activity: AppCompatActivity) {
 
     fun openFragment(@IdRes containerId: Int, fragment: Fragment, type: Type, animType: AnimationType) {
         var currTime = Date().time
-        if(currTime - preTime <= animType.duration) {
+        if(currTime - preTime > animType.duration) {
             preTime = currTime
         } else {
             return
