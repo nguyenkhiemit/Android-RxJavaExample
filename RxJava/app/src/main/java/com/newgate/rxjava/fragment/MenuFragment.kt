@@ -1,8 +1,11 @@
-package com.newgate.rxjava
+package com.newgate.rxjava.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.newgate.rxjava.R
+import com.newgate.rxjava.adapter.MenuAdapter
 import com.newgate.rxjava.base.BaseFragment
+import com.newgate.rxjava.base.NavigationManager
 import com.newgate.rxjava.models.Menu
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 
@@ -12,6 +15,8 @@ import kotlinx.android.synthetic.main.fragment_menu.view.*
 class MenuFragment: BaseFragment() {
 
     lateinit var arrayMenu: ArrayList<Menu>
+
+    lateinit var adapter: MenuAdapter
 
     override fun layoutResID(): Int {
         return R.layout.fragment_menu
@@ -30,8 +35,14 @@ class MenuFragment: BaseFragment() {
         for(i in menus.indices) {
             arrayMenu.add(Menu(i, menus[i]))
         }
+        adapter = MenuAdapter(context, arrayMenu) {
+            when(it) {
+                0 -> navigation.openFragment(R.id.containerFrame, RxJavaFunFragment.newInstance(), NavigationManager.Type.ADD, NavigationManager.AnimationType.LEFT_RIGHT)
+                1 -> navigation.openFragment(R.id.containerFrame, LoginFragment.newInstance(), NavigationManager.Type.ADD, NavigationManager.AnimationType.LEFT_RIGHT)
+            }
+        }
         view.menuRecyclerView.layoutManager = LinearLayoutManager(context)
-        view.menuRecyclerView.
+        view.menuRecyclerView.adapter = adapter
     }
 }
 

@@ -2,10 +2,10 @@ package com.newgate.rxjava.base
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.newgate.rxjava.activity.MainActivity
 
 /**
  * Created by apple on 7/31/17.
@@ -24,4 +24,5 @@ open abstract class BaseFragment: Fragment() {
         bindView(view)
         return view
     }
+ 
 }

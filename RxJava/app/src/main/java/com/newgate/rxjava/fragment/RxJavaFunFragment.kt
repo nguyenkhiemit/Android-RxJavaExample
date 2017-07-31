@@ -1,9 +1,10 @@
-package com.newgate.rxjava
+package com.newgate.rxjava.fragment
 
 import android.util.Log
 import android.view.View
 import com.jakewharton.rxbinding.view.RxView
 import com.jakewharton.rxbinding.widget.RxTextView
+import com.newgate.rxjava.R
 import com.newgate.rxjava.base.BaseFragment
 import com.newgate.rxjava.models.User
 import kotlinx.android.synthetic.main.fragment_rxjava.view.*
