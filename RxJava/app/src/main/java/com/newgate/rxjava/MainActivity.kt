@@ -1,12 +1,16 @@
 package com.newgate.rxjava
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import com.newgate.rxjava.base.BaseActivity
+import com.newgate.rxjava.base.NavigationManager
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun layoutResID(): Int {
+        return R.layout.activity_main
+    }
+
+    override fun bindView() {
+        navigation.openFragment(R.id.menuFrame, MenuFragment.newInstance(), NavigationManager.Type.ADD)
+        navigation.openFragment(R.id.containerFrame, RxJavaFunFragment.newInstance(), NavigationManager.Type.ADD, NavigationManager.AnimationType.LEFT_RIGHT)
     }
 }

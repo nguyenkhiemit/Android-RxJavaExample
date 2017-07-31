@@ -4,12 +4,93 @@
     android:background="@color/colorPrimary"
     android:padding="15dp"
     android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <Button
-        android:id="@+id/justButton"
+        android:id="@+id/filterButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:text="JUST"/>
+        android:text="Filter"/>
 
+    <Button
+        android:id="@+id/forEachButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="For Each"/>
+
+    <Button
+        android:id="@+id/groupByButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="Group By ?"/>
+
+    <Button
+        android:id="@+id/takeButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="Take"/>
+
+    <Button
+        android:id="@+id/firstButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="First"/>
+
+    <Button
+        android:id="@+id/lastButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="Last"/>
+
+    <Button
+        android:id="@+id/distinctButton"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="Distinct"/>
+
+        <Button
+            android:id="@+id/mapButton"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Map"/>
+
+        <Button
+            android:id="@+id/iterateButton"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Iterate an array list"/>
+
+        <EditText
+            android:id="@+id/observeEditText"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:padding="5dp"
+            android:hint="observe edittext"/>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,17 +1,17 @@
-package com.newgate.rxjava
+package com.newgate.rxjava.base
 
-import android.app.Activity
 import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentActivity
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import com.newgate.rxjava.R
 import java.util.*
-import javax.xml.datatype.Duration
 
 /**
  * Created by khiemnd on 7/30/17.
  */
-class NavigationManager(var activity: AppCompatActivity) {
+class NavigationManager(var activity: FragmentActivity) {
 
     var fragmentManager = activity.supportFragmentManager
 
@@ -23,6 +23,16 @@ class NavigationManager(var activity: AppCompatActivity) {
 
     enum class AnimationType(var duration: Long) {
         LEFT_RIGHT(200), BOTTOM_TOP(400)
+    }
+
+    fun openFragment(@IdRes containerId: Int, fragment: Fragment, type: Type) {
+        var transaction: FragmentTransaction = fragmentManager.beginTransaction()
+        when(type) {
+            Type.ADD -> transaction.add(containerId, fragment)
+            Type.REPLACE -> transaction.replace(containerId, fragment)
+        }
+        transaction.addToBackStack(fragment.javaClass.simpleName)
+        transaction.commit()
     }
 
     fun openFragment(@IdRes containerId: Int, fragment: Fragment, type: Type, animType: AnimationType) {
