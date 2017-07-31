@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">RxJava</string>
+
+    <string-array name="menu_array">
+        <item>Home</item>
+        <item>Login</item>
+        <item>Search</item>
+    </string-array>
 </resources>

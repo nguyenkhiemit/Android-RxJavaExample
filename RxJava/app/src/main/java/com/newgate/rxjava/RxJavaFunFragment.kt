@@ -5,7 +5,7 @@ import android.view.View
 import com.jakewharton.rxbinding.view.RxView
 import com.jakewharton.rxbinding.widget.RxTextView
 import com.newgate.rxjava.base.BaseFragment
-import kotlinx.android.synthetic.main.fragment_rxjava.*
+import com.newgate.rxjava.models.User
 import kotlinx.android.synthetic.main.fragment_rxjava.view.*
 import rx.Observable
 

@@ -1,4 +1,4 @@
-package com.newgate.rxjava
+package com.newgate.rxjava.models
 
 /**
  * Created by apple on 7/31/17.
