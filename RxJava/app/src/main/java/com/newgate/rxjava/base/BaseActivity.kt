@@ -1,14 +1,15 @@
 package com.newgate.rxjava.base
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.support.v4.app.FragmentActivity
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
+import com.newgate.rxjava.utils.DialogUtils
 
 /**
  * Created by apple on 7/31/17.
  */
-open abstract class BaseActivity: FragmentActivity() {
+open abstract class BaseActivity: AppCompatActivity() {
 
     abstract fun layoutResID(): Int
 
@@ -22,4 +23,5 @@ open abstract class BaseActivity: FragmentActivity() {
         navigation = NavigationManager(this)
         bindView()
     }
+
 }

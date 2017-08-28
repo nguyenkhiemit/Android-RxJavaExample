@@ -110,7 +110,6 @@ class RxJavaFunFragment: BaseFragment() {
             Log.e("RxJava ", "" + it.text())
         }
 
-        
     }
 
 

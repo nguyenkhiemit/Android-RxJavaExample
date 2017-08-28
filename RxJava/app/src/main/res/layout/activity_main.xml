@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <FrameLayout
+    <fragment
+        android:name="com.newgate.rxjava.fragment.MenuFragment"
         android:id="@+id/menuFrame"
         android:layout_width="240dp"
         android:layout_height="match_parent"

@@ -2,11 +2,14 @@ package com.newgate.rxjava.fragment
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.RelativeLayout
 import com.newgate.rxjava.R
+import com.newgate.rxjava.RxJavaFunFragment
 import com.newgate.rxjava.adapter.MenuAdapter
 import com.newgate.rxjava.base.BaseFragment
 import com.newgate.rxjava.base.NavigationManager
 import com.newgate.rxjava.models.Menu
+import junit.framework.Test
 import kotlinx.android.synthetic.main.fragment_menu.view.*
 
 /**
@@ -37,9 +40,11 @@ class MenuFragment: BaseFragment() {
         }
         adapter = MenuAdapter(context, arrayMenu) {
             when(it) {
-                0 -> navigation.openFragment(R.id.containerFrame, RxJavaFunFragment.newInstance(), NavigationManager.Type.ADD, NavigationManager.AnimationType.LEFT_RIGHT)
-                1 -> navigation.openFragment(R.id.containerFrame, LoginFragment.newInstance(), NavigationManager.Type.ADD, NavigationManager.AnimationType.LEFT_RIGHT)
+                0 -> navigation.openFragment(R.id.containerFrame, RxJavaFunFragment.newInstance(), NavigationManager.Type.REPLACE, NavigationManager.AnimationType.LEFT_RIGHT)
+                1 -> navigation.openFragment(R.id.containerFrame, LoginFragment.newInstance(), NavigationManager.Type.REPLACE, NavigationManager.AnimationType.LEFT_RIGHT)
+                3 -> navigation.openFragment(R.id.containerFrame, TestNavigationA.newInstance(), NavigationManager.Type.REPLACE, NavigationManager.AnimationType.LEFT_RIGHT)
             }
+            getMainActivity()?.closeDrawLayout()
         }
         view.menuRecyclerView.layoutManager = LinearLayoutManager(context)
         view.menuRecyclerView.adapter = adapter
