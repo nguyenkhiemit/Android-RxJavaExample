@@ -55,13 +55,28 @@ class NavigationManager(var activity: FragmentActivity) {
 
     }
 
+    /**
+     * Nhấn nút back
+     */
     fun onBack() {
         fragmentManager.popBackStack()
     }
 
+    /**
+     * pop all fragment out
+     *  keep HomeFragment
+     */
+    fun backToRoot() {
+        var count = backStackCount()
+        while (count > 1) {
+            count--
+            fragmentManager.popBackStack()
+        }
+    }
+
     fun gotoFragment(tag: String) {
         var count = backStackCount()
-        while (count > 0) {
+        while (count > 1) {
             if(fragmentManager.getBackStackEntryAt(count - 1).name == tag) {
                 break
             }

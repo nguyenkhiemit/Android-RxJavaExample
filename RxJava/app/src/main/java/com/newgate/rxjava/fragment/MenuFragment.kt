@@ -39,6 +39,7 @@ class MenuFragment: BaseFragment() {
             arrayMenu.add(Menu(i, menus[i]))
         }
         adapter = MenuAdapter(context, arrayMenu) {
+            navigation.backToRoot()
             when(it) {
                 0 -> navigation.openFragment(R.id.containerFrame, RxJavaFunFragment.newInstance(), NavigationManager.Type.REPLACE, NavigationManager.AnimationType.LEFT_RIGHT)
                 1 -> navigation.openFragment(R.id.containerFrame, LoginFragment.newInstance(), NavigationManager.Type.REPLACE, NavigationManager.AnimationType.LEFT_RIGHT)
