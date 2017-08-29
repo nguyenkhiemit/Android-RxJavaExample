@@ -8,6 +8,8 @@ import com.newgate.rxjava.base.BaseFragment
 import com.newgate.rxjava.models.User
 import kotlinx.android.synthetic.main.fragment_rxjava.view.*
 import rx.Observable
+import java.util.*
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by apple on 7/31/17.
@@ -26,6 +28,9 @@ class RxJavaFunFragment: BaseFragment() {
     }
 
     override fun bindView(view: View) {
+        /**
+         * filter
+         */
         RxView.clicks(view.filterButton).subscribe {
             Observable.just(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                     .filter { i -> i % 2 == 0 }
@@ -34,6 +39,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * for each
+         */
         RxView.clicks(view.forEachButton).subscribe {
             Observable.just(1, 2, 3, 4, 5)
                     .forEach {
@@ -41,6 +49,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * group by
+         */
         RxView.clicks(view.groupByButton).subscribe {
             Observable.just(1, 2, 3, 4, 5)
                     .groupBy<Any> { integer -> integer!! % 2 == 0 }
@@ -52,6 +63,9 @@ class RxJavaFunFragment: BaseFragment() {
 
         }
 
+        /**
+         * take
+         */
         RxView.clicks(view.takeButton).subscribe {
             Observable.just(1, 2, 3, 4, 5)
                     .take(3)
@@ -60,6 +74,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * first
+         */
         RxView.clicks(view.firstButton).subscribe {
             Observable.just(1, 2, 3, 4, 5)
                     .first()
@@ -68,6 +85,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * last
+         */
         RxView.clicks(view.lastButton).subscribe {
             Observable.just(1, 2, 3, 4, 5)
                     .last()
@@ -76,6 +96,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * distinct
+         */
         RxView.clicks(view.distinctButton).subscribe {
             Observable.just(1, 2, 3, 4, 3, 5, 2)
                     .distinct()
@@ -84,6 +107,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * map
+         */
         RxView.clicks(view.mapButton).subscribe {
             Observable.just(1, 2, 3)
                     .map { i -> i * 2 }
@@ -92,6 +118,9 @@ class RxJavaFunFragment: BaseFragment() {
                     }
         }
 
+        /**
+         * iterate
+         */
         RxView.clicks(view.iterateButton).subscribe {
             var users = ArrayList<User>()
             users.add(User("John Snow"))
@@ -108,6 +137,37 @@ class RxJavaFunFragment: BaseFragment() {
 
         RxTextView.textChangeEvents(view.observeEditText).subscribe {
             Log.e("RxJava ", "" + it.text())
+        }
+
+        /**
+         * Flat Map
+         * input: [a, b, c]
+         * output : [ax, bx, cx]
+         */
+        RxView.clicks(view.flatMap).subscribe {
+            var items = arrayListOf<String>()
+            items.add("a")
+            items.add("b")
+            items.add("c")
+            Observable.from(items).flatMap {
+                Observable.just(it + "x")
+            }.toList().subscribe {
+                Log.e("RxJava ", "" + it)
+            }
+        }
+
+        /**
+         * Flat Map
+         * input: a, b, c / x, y, z
+         * output : [a, b, c, x, y, z]
+         */
+        RxView.clicks(view.flatMap2).subscribe {
+            val sequence1 = Observable.just("x", "y", "z")
+            val sequence2 = Observable.just("a", "b", "c")
+            val sequenceOfSequences = Observable.just(sequence1, sequence2)
+            sequenceOfSequences.flatMap { it }.toList().subscribe {
+                Log.e("RxJava ", "" + it)
+            }
         }
 
     }

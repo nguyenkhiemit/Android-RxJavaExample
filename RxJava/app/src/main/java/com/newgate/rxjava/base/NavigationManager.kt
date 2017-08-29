@@ -57,9 +57,11 @@ class NavigationManager(var activity: FragmentActivity) {
 
     /**
      * Nhấn nút back
+     * executePendingTransactions mới khiến backStackCount giảm xuống
      */
     fun onBack() {
         fragmentManager.popBackStack()
+        fragmentManager.executePendingTransactions()
     }
 
     /**
@@ -70,7 +72,7 @@ class NavigationManager(var activity: FragmentActivity) {
         var count = backStackCount()
         while (count > 1) {
             count--
-            fragmentManager.popBackStack()
+            onBack()
         }
     }
 
@@ -81,7 +83,7 @@ class NavigationManager(var activity: FragmentActivity) {
                 break
             }
             count--
-            fragmentManager.popBackStack()
+            onBack()
         }
     }
 

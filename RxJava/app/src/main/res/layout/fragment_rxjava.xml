@@ -91,6 +91,22 @@
             android:background="@android:color/white"
             android:padding="5dp"
             android:hint="observe edittext"/>
+
+        <Button
+            android:id="@+id/flatMap"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Flat Map"/>
+
+        <Button
+            android:id="@+id/flatMap2"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:text="Flat Map 2"/>
     </LinearLayout>
     </ScrollView>
 </LinearLayout>
